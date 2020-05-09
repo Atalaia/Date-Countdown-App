@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
+      <mat-toolbar>Menu</mat-toolbar>
+      <mat-nav-list>
+        <a *ngIf="!authService.user" mat-list-item href="#" [routerLink]="['/users/login']">Log In</a>
+        <a *ngIf="!authService.user" mat-list-item href="#" [routerLink]="['/users/register']">Sign Up</a>
+        <a *ngIf="authService.user" mat-list-item href="#" [routerLink]="['/my-events']">My Events</a>
+        <a *ngIf="authService.user" mat-list-item href="#" [routerLink]="['/create-event']">Create an event</a>
+        <a *ngIf="authService.user" mat-list-item href="#" (click)="onLogout()">Log Out</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <a href="#" style="color: white; text-decoration: none" color="link" [routerLink]="'/'">My Events Countdown App</a>
+      </mat-toolbar>
+  
+      <!-- Add Content Here -->
+      <router-outlet></router-outlet>
+  
+    </mat-sidenav-content>
+  </mat-sidenav-container>

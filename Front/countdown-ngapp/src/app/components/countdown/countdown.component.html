@@ -1,0 +1,16 @@
+<div>
+    <h3>{{days}} d - {{hours}} h - {{minutes}} min - {{seconds}} s</h3>
+</div>
+<div>
+    <mat-progress-spinner color="primary" [diameter]="100" [value]="percent" mode="'determinate'">
+    </mat-progress-spinner>
+</div>
+<div>
+    <h3 *ngIf="percent === 100">IT'S TIME!!</h3>
+</div>
+<div>
+    <input matInput [matDatepicker]="picker" [min]="startDateTime" placeholder="Choose a date"
+        (dateInput)="addEvent($event)" (dateChange)="addEvent($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</div>

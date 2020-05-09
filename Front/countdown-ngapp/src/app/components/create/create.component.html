@@ -1,0 +1,24 @@
+<mat-card class="content-margin">
+    <h1>Create an event</h1>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="example-form" novalidate>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Ex. My birthday" formControlName="title" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <input matInput placeholder="Ex. Countdown until my next birthday party!" formControlName="description" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Event End Date</mat-label>
+            <input type="date" matInput formControlName="eventEndDate" required>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">Submit</button>
+    </form>
+
+</mat-card>
