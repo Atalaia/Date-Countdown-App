@@ -37,9 +37,11 @@ exports.user_signup = async (req, res) => {
         // add user into DB
         const hashPassword = await bcrypt.hash(req.body.password, 10);
         const newUser = new UserModel({
-            name: req.body.name,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
             email: req.body.email,
-            password: hashPassword
+            password: hashPassword,
+            birthday: req.body.birthday
         });
         const createdUser = await newUser.save();
         res.status(201).json(createdUser);

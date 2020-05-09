@@ -9,7 +9,7 @@ const EventSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    created_at: { type: Date, default: Date.now }
+    createdAt: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model('Event', EventSchema);
