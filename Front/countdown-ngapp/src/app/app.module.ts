@@ -31,6 +31,7 @@ import { CreateComponent } from './components/create/create.component';
 import { UpdateComponent } from './components/update/update.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { ListComponent } from './components/list/list.component';
+import { BackButtonDirective } from './directives/back-button.directive';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ListComponent } from './components/list/list.component';
     CreateComponent,
     UpdateComponent,
     DetailComponent,
-    ListComponent
+    ListComponent,
+    BackButtonDirective
   ],
   imports: [
     BrowserModule,

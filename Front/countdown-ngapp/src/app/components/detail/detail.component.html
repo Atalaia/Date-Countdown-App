@@ -1,1 +1,15 @@
-<h1>detail works</h1>
+<div *ngIf="isLoadingResults" class="details">
+        <mat-card>
+            <mat-card-title>Event</mat-card-title>
+            <mat-card-content>Title: {{event.title}}</mat-card-content>
+            <mat-card-content>Description: {{event.description}}</mat-card-content>
+            <mat-card-content>Event date: {{event.eventEndDate | date:'dd/MM/yyyy' }}</mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-title>Countdown</mat-card-title>
+            <mat-card-content>
+                <app-countdown [startDate]="startDateTime"  [endDate]="endDateTime"></app-countdown>
+            </mat-card-content>
+            <button backButton mat-button color="primary">Back</button>
+        </mat-card>
+</div>

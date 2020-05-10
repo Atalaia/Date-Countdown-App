@@ -12,11 +12,12 @@ import { Event } from 'src/app/models/event.model';
 export class DetailComponent implements OnInit {
 
   isLoadingResults = false;
-  event: any;
+  event: Event;
+  startDateTime: Date;
+  endDateTime: Date;
 
   constructor(
     private route: ActivatedRoute,
-    private authService: AuthService,
     private eventService: EventService,
     private router: Router
   ) { }
@@ -33,6 +34,8 @@ export class DetailComponent implements OnInit {
       .subscribe(data => {
         this.event = data;
         console.log(this.event);
+        this.startDateTime = data.createdAt;
+        this.endDateTime = data.eventEndDate;
         this.isLoadingResults = true;
       })
   }
