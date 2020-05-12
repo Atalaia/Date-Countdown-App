@@ -1,7 +1,7 @@
 <mat-card class="content-margin">
     <h1>Log In</h1>
-
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="example-form">
+        
         <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
             <input type="email" matInput placeholder="example@xyz.com" formControlName="email" required>
@@ -11,6 +11,10 @@
             <mat-label>Password</mat-label>
             <input type="password" matInput formControlName="password" required>
         </mat-form-field>
+
+        <div class="invalid-login" *ngIf="invalidLogin">
+            * There is no user or password matching this data.
+        </div>
 
         <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">Submit</button>
     </form>

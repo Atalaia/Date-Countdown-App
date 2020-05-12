@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserModel } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
+import { ResourceLoader } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  invalidLogin: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,9 +35,15 @@ export class LoginComponent implements OnInit {
       ).subscribe(
         (data: UserModel) => {
           console.log(data);
-          if(data !== undefined) {
+          if (data !== undefined) {
             this.router.navigate(['/']);
-          } 
+          } else {
+            this.invalidLogin = true;
+          }
+        },
+        error => {
+          // Login Error
+          console.log(error);
         }
       );
 
