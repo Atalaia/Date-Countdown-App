@@ -14,14 +14,15 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseUrlInterceptor } from './interceptors/base-url.interceptor';
 import { API_URL } from './interceptors/base-url.interceptor';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'my-events', component: ListComponent },
-  { path: 'create-event', component: CreateComponent },
-  { path: 'event-details/:id', component: DetailComponent },
-  { path: 'update-event/:id', component: UpdateComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuardGuard] },
+  { path: 'my-events', component: ListComponent, canActivate: [AuthGuardGuard] },
+  { path: 'create-event', component: CreateComponent, canActivate: [AuthGuardGuard] },
+  { path: 'event-details/:id', component: DetailComponent, canActivate: [AuthGuardGuard] },
+  { path: 'update-event/:id', component: UpdateComponent, canActivate: [AuthGuardGuard] },
   {
     path: 'users',
     children: [
@@ -35,6 +36,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [
+    AuthGuardGuard,
     {
       provide: API_URL,
       useValue: environment.apiURL
@@ -44,7 +46,7 @@ const routes: Routes = [
       useClass: BaseUrlInterceptor,
       multi: true,
       deps: [API_URL]
-    },{
+    }, {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true
