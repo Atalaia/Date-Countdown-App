@@ -4,9 +4,3 @@
 <div>
     <h3 *ngIf="percent === 100">IT'S TIME!!</h3>
 </div>
-<div>
-    <input matInput [matDatepicker]="picker" [min]="startDateTime" placeholder="Choose a date"
-        (dateInput)="addEvent($event)" (dateChange)="addEvent($event)">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-</div>

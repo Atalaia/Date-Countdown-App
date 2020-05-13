@@ -7,6 +7,7 @@
       <mat-nav-list>
         <a *ngIf="!authService.user" mat-list-item href="#" [routerLink]="['/users/login']">Log In</a>
         <a *ngIf="!authService.user" mat-list-item href="#" [routerLink]="['/users/register']">Sign Up</a>
+        <a *ngIf="authService.user" mat-list-item href="#" [routerLink]="['/']">Home</a>
         <a *ngIf="authService.user" mat-list-item href="#" [routerLink]="['/my-events']">My Events</a>
         <a *ngIf="authService.user" mat-list-item href="#" [routerLink]="['/create-event']">Create an event</a>
         <a *ngIf="authService.user" mat-list-item href="#" (click)="onLogout()">Log Out</a>

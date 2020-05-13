@@ -1,4 +1,14 @@
 <div *ngIf="isLoadingResults" class="grid-container">
+    <h1 class="mat-h1">Date Countdown</h1>
+    <div>
+        <input matInput [matDatepicker]="picker" [min]="startDateTime" placeholder="Choose a date"
+            (dateInput)="addEvent($event)" (dateChange)="addEvent($event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <div *ngIf="endDateTime" >
+            <app-countdown [endDate]="endDateTime"></app-countdown>
+        </div>
+    </div>
     <h1 class="mat-h1">My Events Countdown</h1>
     <mat-grid-list cols="2" rowHeight="350px">
         <mat-grid-tile *ngFor="let event of events">

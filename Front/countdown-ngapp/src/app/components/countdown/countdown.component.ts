@@ -54,18 +54,5 @@ export class CountdownComponent implements OnInit {
       this.percent = 100;
     }
   }
-
-  // Angular material datepicker
-  @Output()
-  dateChange: EventEmitter<MatDatepickerInputEvent<any>>;
-  @Output()
-  dateInput: EventEmitter<MatDatepickerInputEvent<any>>;
-
-  addEvent(date: any) {
-    console.log(date.value);
-    console.log(typeof date.value);
-
-    this.endDateTime = date.value.getTime();
-  }
   
 } // COMPONENT ENDS
