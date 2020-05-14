@@ -1,5 +1,4 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="isLoadingResults">
     <!-- Position Column -->
     <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -27,9 +26,21 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let element">
-            <button mat-button [routerLink]="['/event-details',element._id]">DETAILS</button>
-            <button mat-button [routerLink]="['/update-event',element._id]">EDIT</button>
-            <button mat-button (click)="deleteItem(element._id)">DELETE</button>
+            <div class="material-icons">
+                <button mat-mini-fab color="primary" mat-button [routerLink]="['/event-details',element._id]">
+                    <mat-icon matTooltip="Details">details</mat-icon>
+                </button>
+            </div>
+            <div class="material-icons">
+                <button mat-mini-fab color="primary" mat-button [routerLink]="['/update-event',element._id]">
+                    <mat-icon matTooltip="Edit">edit</mat-icon>
+                </button>
+            </div>
+            <div class="material-icons">
+                <button mat-mini-fab color="primary" mat-button (click)="deleteItem(element._id)">
+                    <mat-icon matTooltip="Delete">delete</mat-icon>
+                </button>
+            </div>
         </td>
     </ng-container>
 

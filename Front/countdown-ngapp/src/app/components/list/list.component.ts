@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
 import { EventService } from 'src/app/services/event.service';
 
 @Component({
@@ -14,11 +13,11 @@ export class ListComponent implements OnInit {
   displayedColumns: string[] = ['position', 'title', 'description', 'eventEndDate', 'actions'];
 
   userId: string;
+  isLoadingResults: boolean = false;
 
   constructor(
     private authService: AuthService,
     private eventService: EventService,
-    private router: Router
   ) { }
 
   ngOnInit() {
@@ -31,6 +30,7 @@ export class ListComponent implements OnInit {
         (data => {
           this.dataSource = data;
           console.log(this.dataSource);
+          this.isLoadingResults = true;
         })
       )
   }
