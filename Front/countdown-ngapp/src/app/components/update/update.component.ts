@@ -4,6 +4,7 @@ import { EventService } from 'src/app/services/event.service';
 import { Event } from 'src/app/models/event.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-update',
@@ -50,9 +51,15 @@ export class UpdateComponent implements OnInit {
   }
   
   setFormValues() {
+    console.log(this.event.eventEndDate);
+    console.log(typeof this.event.eventEndDate);
+
+    const endDate =  formatDate(this.event.eventEndDate, 'yyyy-MM-dd', 'en-US');
+    console.log(endDate);
+    
     this.form.get('title').setValue(this.event.title);
     this.form.get('description').setValue(this.event.description);
-    this.form.get('eventEndDate').setValue(this.event.eventEndDate);
+    this.form.get('eventEndDate').setValue(endDate);
   }
 
   onSubmit(): void {
