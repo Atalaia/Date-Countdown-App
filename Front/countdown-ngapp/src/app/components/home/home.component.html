@@ -39,5 +39,14 @@
                 </mat-card-content>
             </mat-card>
         </mat-grid-tile>
+        <mat-card class="card-no-events" *ngIf="events.length == 0">
+            <mat-card-title class="card-no-events-title">
+                No events have been created yet
+            </mat-card-title>
+            <mat-card-content>
+                <p>Please click below to create a new event</p>
+                <button mat-raised-button color="primary" [routerLink]="['/create-event']">Create an event</button>
+            </mat-card-content>
+        </mat-card>
     </mat-grid-list>
 </div>
