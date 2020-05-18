@@ -1,5 +1,5 @@
 # Date-Countdown-App
-An application that allows you to create events, save these events and calculates countdown until the date of these event. 
+An application that allows you to create events, save these events and calculates countdown until the date of these events. 
 
 BACK technologies used in this application: NodeJS, Express, Mongoose, MongoDB to build a CRUD API.
 
