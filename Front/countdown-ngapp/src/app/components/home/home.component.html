@@ -1,12 +1,15 @@
 <div *ngIf="isLoadingResults" class="grid-container">
     <h1 class="mat-h1">Date Countdown</h1>
-    <div>
+    <div class="date-countdown">
         <input matInput [matDatepicker]="picker" [min]="startDateTime" placeholder="Choose a date"
             (dateInput)="addEvent($event)" (dateChange)="addEvent($event)">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <div *ngIf="endDateTime" >
+        <div *ngIf="endDateTime" class="random-date-countdown">
             <app-countdown [endDate]="endDateTime"></app-countdown>
+        </div>
+        <div *ngIf="endDateTime" class="reset-button">
+            <button mat-raised-button color="primary" (click)="resetCountdown()">Reset Countdown</button>
         </div>
     </div>
     <h1 class="mat-h1">My Events Countdown</h1>
@@ -16,11 +19,19 @@
                 <mat-card-header>
                     <mat-card-title>
                         {{event.title}}
+                        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu" xPosition="before">
+                            <button mat-menu-item [routerLink]="['/event-details',event._id]">Details</button>
+                            <button mat-menu-item [routerLink]="['/update-event',event._id]">Edit</button>
+                            <button mat-menu-item (click)="deleteItem(event._id)">Remove</button>
+                        </mat-menu>
+                    </mat-card-title>
+                    <mat-card-title>
+                        {{event.eventEndDate | date:'dd/MM/yyyy'}}
                     </mat-card-title>
                 </mat-card-header>
-                <mat-card-content>
-                    {{event.eventEndDate | date:'dd/MM/yyyy'}}
-                </mat-card-content>
                 <mat-card-content class="dashboard-card-content">
                     <div>
                         <app-countdown [endDate]="event.eventEndDate"></app-countdown>

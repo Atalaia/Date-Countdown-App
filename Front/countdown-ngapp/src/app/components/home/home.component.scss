@@ -1,21 +1,36 @@
+.date-countdown {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: left;
+}
+
+.random-date-countdown {
+  margin-left: 40px;
+}
+
+.reset-button {
+  margin-left: 40px;
+}
+
 .grid-container {
     margin: 20px;
-  }
+}
   
-  .dashboard-card {
+.dashboard-card {
     position: absolute;
     top: 15px;
     left: 15px;
     right: 15px;
     bottom: 15px;
-  }
+}
   
-  .more-button {
+.more-button {
     position: absolute;
     top: 5px;
     right: 10px;
-  }
+}
   
-  .dashboard-card-content {
+.dashboard-card-content {
     text-align: center;
-  }
+    margin-top: 50px;
+}

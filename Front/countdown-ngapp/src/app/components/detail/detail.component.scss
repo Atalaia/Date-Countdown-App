@@ -1,5 +1,27 @@
+.flexContainer {
+    display: flex;
+    justify-content: center;
+}
+.back-button {
+    display: flex;
+    justify-content: center;
+}
+
 .details {
-    flex-direction: row;
-    display: inline;
+    flex-basis: 30%;
+}
+
+.countdown {
+    flex-basis: 30%;
+}
+
+.mat-card {
+    margin: 10px;
+    height: 250px;
+    width: 350px;
+}
+
+.mat-card-title {
+    margin-bottom: 15px;
 }
 

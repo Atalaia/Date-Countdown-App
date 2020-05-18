@@ -15,19 +15,19 @@ export class HomeComponent implements OnInit {
   userId: string = '';
   events: Event[];
 
-   // Angular material datepicker
-   startDateTime: number = new Date().getTime();
-   endDateTime: number;
-   @Output()
-   dateChange: EventEmitter<MatDatepickerInputEvent<any>>;
-   @Output()
-   dateInput: EventEmitter<MatDatepickerInputEvent<any>>;
+  // Angular material datepicker
+  startDateTime: number = new Date().getTime();
+  endDateTime: number;
+  @Output()
+  dateChange: EventEmitter<MatDatepickerInputEvent<any>>;
+  @Output()
+  dateInput: EventEmitter<MatDatepickerInputEvent<any>>;
 
   constructor(
     private eventService: EventService,
     private authService: AuthService
-  ) {}
-  
+  ) { }
+
   ngOnInit(): void {
     if (this.authService.user) {
       this.userId = this.authService.user._id;
@@ -38,7 +38,19 @@ export class HomeComponent implements OnInit {
         this.events = data;
         this.isLoadingResults = true;
       })
-    );
+      );
+  }
+
+  deleteItem(eventId) {
+    if (confirm("Are you sure you want to delete this event?")) {
+      this.eventService.deleteEvent(eventId)
+        .subscribe(
+          (data => {
+            console.log(data);
+            location.reload();
+          })
+        );
+    }
   }
 
   // Angular material datepicker
@@ -48,4 +60,9 @@ export class HomeComponent implements OnInit {
 
     this.endDateTime = date.value.getTime();
   }
+
+  resetCountdown() {
+    this.endDateTime = null;
+  }
+
 }

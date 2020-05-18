@@ -70,7 +70,8 @@ export class UpdateComponent implements OnInit {
       this.eventService.editEvent(this.event._id, event)
         .subscribe(
           (data: Event) => {
-            this.router.navigate(['/event-details/', this.event._id]);
+            // this.router.navigate(['/event-details/', this.event._id]);
+            this.router.navigate(['/my-events']);
           },
           (err: Error) => console.log(err),
           () => console.log('Request has completed')
